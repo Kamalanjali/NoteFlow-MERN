@@ -11,6 +11,8 @@ const HomePage = () => {
   const [isRateLimited, setIsRateLimited] = useState(false);
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const fetchNotes = async () => {
@@ -34,10 +36,27 @@ const HomePage = () => {
 
     fetchNotes();
   }, []);
+    const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    const results = notes.filter(note =>
+      note.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setSearchResults(results);
+  };
 
   return (
     <div className="min-h-screen">
-      <Navbar />
+      <Navbar
+       searchTerm={searchTerm} 
+       setSearchTerm={setSearchTerm} 
+       onSearch={handleSearch}
+       searchResults={searchResults}
+       />
 
       {isRateLimited && <RateLimitedUI />}
 
@@ -47,11 +66,11 @@ const HomePage = () => {
         {notes.length === 0 && !isRateLimited && <NotesNotFound />}
 
         {notes.length > 0 && !isRateLimited && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {notes.map((note) => (
-              <NoteCard key={note._id} note={note} setNotes={setNotes} />
-            ))}
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+        {notes.map(note => (
+          <NoteCard key={note._id} note={note} setNotes={setNotes} />
+        ))}
+      </div>
         )}
       </div>
     </div>
