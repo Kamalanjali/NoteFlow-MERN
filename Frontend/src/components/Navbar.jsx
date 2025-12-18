@@ -10,9 +10,9 @@ const Navbar = ({searchTerm, setSearchTerm, onSearch, searchResults}) => {
         <div className='mx-auto max-w-6xl p-4'>
             <div className='flex items-center justify-between relative'>
                 {/* logo and name div */}
-                <div className='flex items-start justify-around'>
+                <div className='flex items-start gap-2 shrink-0'>
                   <NotebookPenIcon className="size-8 text-[#3a3fd1] p-x-2" />
-                  <h1 className='text-3xl font-bold font-lora tracking-tight text-[#3a3fd1]'>NoteFlow</h1>
+                  <h1 className='text-xl sm:text-3xl font-bold font-lora tracking-tight text-[#3a3fd1] hidden sm:block'>NoteFlow</h1>
                 </div>
 
                 {/* <SearchBar /> */}
