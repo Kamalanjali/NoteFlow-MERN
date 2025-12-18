@@ -1,2 +1,8 @@
     # .gitignore
     .env
+    .env.local
+    .env.production
+    .env.test
+    
+    # node stuff
+    node_modules/
