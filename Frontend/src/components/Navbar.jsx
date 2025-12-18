@@ -12,7 +12,7 @@ const Navbar = ({searchTerm, setSearchTerm, onSearch, searchResults}) => {
                 {/* logo and name div */}
                 <div className='flex items-start justify-around'>
                   <NotebookPenIcon className="size-8 text-[#3a3fd1] p-x-2" />
-                  <h1 className='text-3xl font-bold text-primary font-lora tracking-tight text-[#3a3fd1]'>NoteFlow</h1>
+                  <h1 className='text-3xl font-bold font-lora tracking-tight text-[#3a3fd1]'>NoteFlow</h1>
                 </div>
 
                 {/* <SearchBar /> */}
