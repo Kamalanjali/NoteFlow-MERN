@@ -14,7 +14,12 @@ const PORT = process.env.PORT || 5001;
 
 // middleware
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: [
+    "http://localhost:5173",
+    "https://noteflow-mern.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
 }));
 app.use(express.json()); //this middleware will parse the JSON bodies : req.body
 app.use(rateLimiter);
